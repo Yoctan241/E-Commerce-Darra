@@ -1,0 +1,11 @@
+[
+  {
+    "id": "admin-user-001",
+    "firstName": "Admin",
+    "lastName": "DARRA",
+    "email": "admin@darra.com",
+    "password": "$2a$10$rjYVxFG8Qy6MjPqEQhGdqOGe1hC8xQ3Pl9Y8j8Nq5M2k0R1Pv5Y6",
+    "isAdmin": true,
+    "createdAt": "2025-11-17T09:00:00.000Z"
+  }
+]
