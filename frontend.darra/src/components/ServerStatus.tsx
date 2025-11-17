@@ -16,7 +16,7 @@ export default function ServerStatus({ onServerReady }: ServerStatusProps) {
     try {
       console.log('🔍 Vérification connexion serveur...');
       // Essayer la nouvelle API
-      const response = await fetch('http://localhost:5000/health');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/health`);
       if (response.ok) {
         const data = await response.json();
         console.log('✅ Serveur connecté:', data);

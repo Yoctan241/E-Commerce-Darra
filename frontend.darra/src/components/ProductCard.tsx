@@ -4,6 +4,19 @@ import { Badge } from '@/components/ui/badge';
 import { useState } from 'react';
 import { PriceDisplay } from './PriceDisplay';
 
+// Résout les URLs d'image : si l'URL est relative (ex: /uploads/...),
+// on préfixe avec VITE_API_BASE_URL si elle est définie (backend déployé).
+const resolveImageUrl = (img?: string) => {
+  const placeholder = '/images/placeholder.jpg';
+  if (!img) return placeholder;
+  if (img.startsWith('http') || img.startsWith('data:')) return img;
+  if (img.startsWith('/')) {
+    const base = import.meta.env.VITE_API_BASE_URL || '';
+    return base ? `${base}${img}` : img;
+  }
+  return img;
+};
+
 export interface Product {
   id: string;
   name: string;
@@ -40,7 +53,7 @@ export default function ProductCard({ product, onAddToCart, onViewDetails }: Pro
       {/* Image Container */}
       <div className="relative h-64 bg-gradient-to-br from-[#faf8f3] to-[#e8f5e9] overflow-hidden">
         <img
-          src={product.image}
+          src={resolveImageUrl(product.image)}
           alt={product.name}
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
         />

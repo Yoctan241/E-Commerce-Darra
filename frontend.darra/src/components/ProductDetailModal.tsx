@@ -81,7 +81,12 @@ export default function ProductDetailModal({
               <div className="flex flex-col gap-4">
                 <div className="relative h-96 bg-gray-100 rounded-lg overflow-hidden">
                   <img
-                    src={product.image}
+                    src={(img => {
+                      if (!img) return '/images/placeholder.jpg';
+                      if (img.startsWith('http') || img.startsWith('data:')) return img;
+                      const base = import.meta.env.VITE_API_BASE_URL || '';
+                      return base ? `${base}${img}` : img;
+                    })(product.image)}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
@@ -99,7 +104,12 @@ export default function ProductDetailModal({
                   {[product.image, product.image, product.image].map((img, i) => (
                     <img
                       key={i}
-                      src={img}
+                      src={(u => {
+                        if (!u) return '/images/placeholder.jpg';
+                        if (u.startsWith('http') || u.startsWith('data:')) return u;
+                        const base = import.meta.env.VITE_API_BASE_URL || '';
+                        return base ? `${base}${u}` : u;
+                      })(img)}
                       alt={`View ${i + 1}`}
                       className="h-20 object-cover rounded-lg cursor-pointer hover:opacity-75 transition"
                     />

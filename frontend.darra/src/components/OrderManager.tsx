@@ -156,7 +156,16 @@ const OrderDetails = ({ order, onClose }: OrderDetailsProps) => {
                   <div key={item.id} className="flex items-center gap-4 p-4 border rounded-lg">
                     <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
                       {item.image ? (
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" />
+                        <img
+                          src={(u => {
+                            if (!u) return '/images/placeholder.jpg';
+                            if (u.startsWith('http') || u.startsWith('data:')) return u;
+                            const base = import.meta.env.VITE_API_BASE_URL || '';
+                            return base ? `${base}${u}` : u;
+                          })(item.image)}
+                          alt={item.name}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
                       ) : (
                         <Package size={24} className="text-gray-400" />
                       )}

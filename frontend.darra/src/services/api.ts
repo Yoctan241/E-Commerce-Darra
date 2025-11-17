@@ -1,5 +1,5 @@
 // API Service pour DARRA Frontend
-const API_BASE_URL = 'http://localhost:5000'; // Suppression du /api car notre serveur n'utilise pas ce préfixe
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
 export interface Product {
   _id?: string;
@@ -252,7 +252,7 @@ class ApiService {
   // Health check
   async healthCheck(): Promise<boolean> {
     try {
-      const response = await fetch('http://localhost:5000/health');
+      const response = await fetch(`${API_BASE_URL}/health`);
       return response.ok;
     } catch {
       return false;

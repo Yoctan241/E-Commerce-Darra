@@ -36,7 +36,7 @@ export default function ProductGrid({ onAddToCart, onViewDetails }: ProductGridP
     setError(null);
     try {
       console.log('🔄 Chargement des produits depuis l\'API...');
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/products`);
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -116,7 +116,7 @@ export default function ProductGrid({ onAddToCart, onViewDetails }: ProductGridP
   const handleAddProduct = async (productData: FormData) => {
     try {
       console.log('➕ Ajout d\'un nouveau produit...');
-      const response = await fetch('http://localhost:5000/api/products', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'}/api/products`, {
         method: 'POST',
         body: productData,
       });

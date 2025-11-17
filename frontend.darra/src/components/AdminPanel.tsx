@@ -277,7 +277,12 @@ export default function AdminPanel() {
                     ) : (
                       <div className="flex flex-col md:flex-row gap-6">
                         <img
-                          src={product.image}
+                          src={(img => {
+                            if (!img) return '/images/placeholder.jpg';
+                            if (img.startsWith('http') || img.startsWith('data:')) return img;
+                            const base = import.meta.env.VITE_API_BASE_URL || '';
+                            return base ? `${base}${img}` : img;
+                          })(product.image)}
                           alt={product.name}
                           className="w-32 h-32 object-cover rounded-lg"
                         />

@@ -1,1 +1,25 @@
-[]
+[
+  {
+    "id": "mi3bgx405qk7hd2li",
+    "name": "beurre de karité",
+    "description": "cream",
+    "price": 15000,
+    "priceEUR": 22.865853658536587,
+    "priceFCFA": 15000,
+    "currency": "FCFA",
+    "category": "cosmetiques",
+    "brand": "darra",
+    "origin": "",
+    "stock": 13,
+    "inStock": true,
+    "tags": [],
+    "image": "/uploads/1763394355863-667166452.jpeg",
+    "images": [
+      "/uploads/1763394355863-667166452.jpeg"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "isActive": true,
+    "createdAt": "2025-11-17T15:45:55.873Z"
+  }
+]

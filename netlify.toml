@@ -3,16 +3,18 @@
   command = "npm run build"
   publish = "dist"
 
+# Variables d'environnement pour la production
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "8"
+  # URL du backend déployé - REMPLACER PAR VOTRE URL RENDER
+  VITE_API_BASE_URL = "https://darra-backend.onrender.com"
+
 # Configuration pour les Single Page Applications (SPA)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Variables d'environnement pour la production
-[build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "8"
 
 # Configuration des headers pour optimiser les performances
 [[headers]]
